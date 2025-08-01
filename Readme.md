@@ -63,7 +63,7 @@ Use this mode to simulate a dialogue with a manually specified or static prompt 
    python plot_variance.py
    ```
 
-###2. Running Reinforcement Learning for Prompt Selection
+### 2. Running Reinforcement Learning for Prompt Selection
 Use this mode to train and evaluate an RL agent (e.g., DQN) that dynamically selects prompts based on dialogue history and feedback.
 1. **Train RPS mode**:
 
