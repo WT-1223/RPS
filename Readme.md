@@ -1,6 +1,3 @@
-
----
-
 # RPS: Information Elicitation with Reinforcement Prompt Selection
 
 ## Overview
@@ -20,6 +17,9 @@ This repository provides a reinforcement learning (RL) framework for dynamic pro
 
 * **`conversation.py`**
   Implements the dialogue simulation environment, modeling the interaction between the agent (lawyer) and user (defendant).
+
+* **`conversation_grips.py`**
+  Implements the dialogue simulation environment, modeling the interaction between the agent (lawyer) and user (defendant) with GRIPS.
 
 * **`DB.py`**
   Manages data structures for storing and retrieving case-specific information and user responses.
@@ -71,6 +71,18 @@ Use this mode to train and evaluate an RL agent (e.g., DQN) that dynamically sel
    python RPS/train.py
    ```
 
+### 3. Running GRIPS and RLPrompt
+1. GRIPS.
+
+   ```bash
+   python conversation_grips.py
+   ```
+2. RLPrompt.
+
+   ```bash
+   python RPS/train_rlprompt.py
+   ```
+   
 ## License
 
 MIT License 

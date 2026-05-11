@@ -37,26 +37,26 @@ class Agent:
   "config": [
     {
       "name": "glm",
-      "api_key": "5a4f9b5dc7162e4e456801cc61fdcae1.vMUfFqmKDyV9gpHh",
-      "base_url": "https://open.bigmodel.cn/api/paas/v4/"
+      "api_key": "Your API_KEY",
+    "base_url": "Your BASE_URL"
     },
     {
       "name": "gpt",
-      "api_key": "sk-MUlbPssibf9TQeKyCb0bAbD93b0e435aBaC4D325A320Fd99",
-      "base_url": "https://api.rcouyi.com/v1"
+      "api_key": "Your API_KEY",
+      "base_url": "Your BASE_URL"
     },
     {
       "name": "qwen",
       # "name": "deepseek",
-      "api_key": "ollama",
-      "base_url": "http://localhost:11434/v1/"
-      # "api_key": "sk-f9423bf8a6794ac5a1ebcbde818672e2",
-      # "base_url": "https://api.deepseek.com/v1"
+      "api_key": "Your API_KEY",
+      "base_url": "Your BASE_URL"
+    # "api_key": "Your API_KEY",
+    # "base_url": "Your BASE_URL"
     },
     {
       "name": "moonshot",
-      "api_key": "sk-uVa7wiPGUcSUl1fXGDS847dbZhhFUPLa048mA6yVPrdr6fPN",
-      "base_url": "https://api.moonshot.cn/v1"
+      "api_key": "Your API_KEY",
+      "base_url": "Your BASE_URL"
     }
   ]
 }

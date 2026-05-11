@@ -1,6 +1,9 @@
 from sentence_transformers import SentenceTransformer, util
 import json
 import torch,gc
+from typing import List, Dict, Tuple, Optional
+import numpy as np
+
 
 class RewardCalculator:
     def __init__(self, agent, db_connection):
@@ -70,4 +73,18 @@ class RewardCalculator:
         embeddings_ans = model.encode(user_ans)
         similarities = util.cos_sim(embeddings_ans, embeddings_total)
         return similarities
-    
+
+    def normalize(self, rewards: List[float]) -> List[float]:
+        """对同一输入 x (案件/状态) 的一批次 Prompt Rewards Z(x) 进行归一化。"""
+        if len(rewards) <= 1:
+            return [0.0] * len(rewards)
+
+        rewards_np = np.array(rewards)
+        mean = np.mean(rewards_np)
+        std_dev = np.std(rewards_np)
+
+        if std_dev < 1e-6:
+            return [0.0] * len(rewards)
+
+        z_scores = (rewards_np - mean) / std_dev
+        return z_scores.tolist()

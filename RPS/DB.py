@@ -1,5 +1,9 @@
 import pymysql.cursors
 import json
+import torch
+import numpy as np
+from sqlalchemy import distinct
+
 
 class DB:
     def __init__(self, host, user, password, database):
@@ -127,6 +131,8 @@ class DB:
         """
         self.execute_query(update_column_sql, (values, id))
 
+
+
     def save_to_db_DQN(self, case_id, round_number, dialogue):
         column_name = f"round_{round_number}"
         dialogue_text = {
@@ -134,7 +140,14 @@ class DB:
             "当事人": dialogue['当事人'],
             "策略": dialogue.get('策略', 'N/A')
         }
-        dialogue_json = json.dumps(dialogue_text, ensure_ascii=False)  # 转换为 JSON 字符串
+        def distinct_tensor(obj):
+            if isinstance(obj, torch.Tensor):
+                return obj.tolist()  # 将 Tensor 转为 list 或 数字
+            elif isinstance(obj, np.ndarray):
+                return obj.tolist()  # 将 Numpy 数组转为 list
+            raise TypeError(f"Object of type {obj.__class__.__name__} is not JSON serializable")
+
+        dialogue_json = json.dumps(dialogue_text, ensure_ascii=False, default=distinct_tensor)  # 转换为 JSON 字符串
         try:
             self.execute_query(f"""
                 INSERT INTO dialogue_history_DQN(case_id, {column_name})
